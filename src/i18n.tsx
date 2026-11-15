@@ -30,5 +30,5 @@ export function useLanguage() {
 }
 export function LanguagePicker() {
   const { language, setLanguage } = useLanguage()
-  return <label className="language-picker"><span>{language === 'es' ? 'Idioma' : 'Language'}</span><select aria-label={language === 'es' ? 'Idioma' : 'Language'} value={language} onChange={e => setLanguage(e.target.value as Language)}><option value="es">Español</option><option value="en">English</option></select></label>
+  return <label className="language-picker"><span>{language === 'es' ? 'Idioma' : 'Language'}</span><select aria-label={language === 'es' ? 'Idioma' : 'Language'} value={language} onChange={e => setLanguage(e.target.value as Language)}><option value="es">{language === 'es' ? 'Español' : 'Spanish'}</option><option value="en">English</option></select></label>
 }

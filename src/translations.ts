@@ -43,6 +43,7 @@ Dentro de tu rango habitual|Within your usual range
 Referencia: primeros tres registros previos por indicador; índice orientativo.|Baseline: first three previous records per metric; the index is illustrative.
 Referencia personal pendiente: se necesitan al menos tres fechas previas por indicador.|Personal baseline pending: each metric needs at least three previous dates.
 ÍNDICE DE BIENESTAR|WELLBEING INDEX
+ÍNDICE DEL PERFIL|PROFILE INDEX
 Faltan registros o referencia personal|Records or personal baseline missing
 Entrada personal de hoy|Today's personal entry
 Pendiente de registro|Entry pending
@@ -104,6 +105,7 @@ EXPLORAR QUÉ OCURRIÓ|EXPLORE THE EVENT
 Esta relación ayuda a observar tendencias; no es un diagnóstico.|This relationship helps explore trends; it is not a diagnosis.
 LECTURAS EXPLICABLES|EXPLAINABLE SIGNALS
 Señales de hoy|Today's signals
+Señales del perfil|Profile signals
 Sin señales destacadas|No signals highlighted
 Las señales se muestran cuando hay registros y una referencia personal suficiente.|Signals appear when records and a sufficient personal baseline are available.
 Completar chequeo de hoy|Complete today's check-in
@@ -368,6 +370,7 @@ Usa el procedimiento de misión guardado y autorizado. Esta pantalla no inventa 
 No se pudo guardar localmente. Descarga el informe antes de salir.|Could not save locally. Download the report before leaving.
 Inicia el registro antes de preparar el informe.|Start the record before preparing the report.
 No se pudo guardar el informe en la cola local.|Could not save the report to the local queue.
+No hay procedimiento clínico aprobado configurado en esta aplicación.|No approved clinical procedure is configured in this application.
 No se pudo archivar el evento anterior.|Could not archive the previous event.
 Evento finalizado|Event closed
 Sin iniciar|Not started
@@ -406,6 +409,8 @@ Estrés por encima de tu referencia|Stress above your baseline
 Cansancio por encima de tu referencia|Fatigue above your baseline
 Ánimo por debajo de tu referencia|Mood below your baseline
 Sin notas|No notes
+Sin clasificar|Unclassified
+Sin descripción|No description
 Sin registros personales de hoy|No personal records today
 Sin especificar|Not specified
 Preparado|Prepared
@@ -551,6 +556,8 @@ Falta guardar el chequeo de hoy.|Today's check-in has not been saved.
 Avance de comunicación simulada|Simulated communication progress
 Duración debe|Duration must
 REGISTRO DE EMERGENCIA|EMERGENCY RECORD
+Descripción|Description
+Estado: preparado localmente; no transmitido ni entregado.|Status: prepared locally; not transmitted or delivered.
 RESUMEN DE TURNO|SHIFT HANDOVER
 PREPARACIÓN DE SALIDA · APOYO EDUCATIVO|EVA PREPARATION · EDUCATIONAL SUPPORT
 MODO MARTE · SIMULACIÓN EDUCATIVA|MARS MODE · EDUCATIONAL SIMULATION
