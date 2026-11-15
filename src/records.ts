@@ -1,6 +1,6 @@
 export type VitalValues = { pulse: string; oxygen: string; temperature: string; pressure: string; glucose: string }
 export type VitalRecord = { profileId: string; date: string; savedAt: string; values: VitalValues }
-export type EmergencyRecord = { profileId: string; scenarioName: string; event: string; startedAt: number | null; endedAt: number | null; steps: boolean[]; roles: { care: string; comms: string; log: string }; notes: string }
+export type EmergencyRecord = { profileId: string; scenarioName: string; event: string; category?: string; startedAt: number | null; endedAt: number | null; steps: boolean[]; roles: { care: string; comms: string; log: string }; notes: string }
 export function readJSON(key: string): unknown { try { return JSON.parse(localStorage.getItem(key) || 'null') } catch { return null } }
 export function validVitals(v: unknown): v is VitalValues {
   if (!v || typeof v !== 'object') return false
@@ -14,12 +14,12 @@ export function readVital(profileId: string, date: string): VitalRecord | null {
   return data && data.profileId === profileId && data.date === date && typeof data.savedAt === 'string' && validVitals(data.values) ? data : null
 }
 export function emptyEmergency(profileId: string, scenarioName: string): EmergencyRecord {
-  return { profileId, scenarioName, event: '', startedAt: null, endedAt: null, steps: [false, false, false, false, false, false], roles: { care: '', comms: '', log: '' }, notes: '' }
+  return { profileId, scenarioName, event: '', category: '', startedAt: null, endedAt: null, steps: [false, false, false, false, false, false], roles: { care: '', comms: '', log: '' }, notes: '' }
 }
 export function validEmergency(value: unknown, profileId: string): value is EmergencyRecord {
   if (!value || typeof value !== 'object') return false
   const r = value as EmergencyRecord
-  return r.profileId === profileId && typeof r.scenarioName === 'string' && typeof r.event === 'string' && typeof r.notes === 'string' && (r.startedAt === null || Number.isFinite(r.startedAt) && r.startedAt > 0) && (r.endedAt === null || Number.isFinite(r.endedAt) && r.startedAt !== null && r.endedAt >= r.startedAt) && Array.isArray(r.steps) && r.steps.length === 6 && r.steps.every(v => typeof v === 'boolean') && !!r.roles && ['care', 'comms', 'log'].every(key => typeof r.roles[key as keyof typeof r.roles] === 'string')
+  return r.profileId === profileId && typeof r.scenarioName === 'string' && typeof r.event === 'string' && (r.category === undefined || typeof r.category === 'string') && typeof r.notes === 'string' && (r.startedAt === null || Number.isFinite(r.startedAt) && r.startedAt > 0) && (r.endedAt === null || Number.isFinite(r.endedAt) && r.startedAt !== null && r.endedAt >= r.startedAt) && Array.isArray(r.steps) && r.steps.length === 6 && r.steps.every(v => typeof v === 'boolean') && !!r.roles && ['care', 'comms', 'log'].every(key => typeof r.roles[key as keyof typeof r.roles] === 'string')
 }
 export function readEmergency(profileId: string, scenarioName: string): EmergencyRecord {
   const r = readJSON(`cosmic-emergency-v2-${profileId}`)

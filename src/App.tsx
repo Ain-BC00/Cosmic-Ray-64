@@ -13,54 +13,7 @@ export type MetricKey = 'sleep' | 'mood' | 'stress' | 'fatigue' | 'reaction'
 export type Day = { day: string; sleep: number; mood: number; stress: number; fatigue: number; reaction: number; pulse: number; oxygen: number; temperature: number }
 type Profile = { id: string; name: string; role: string; initials: string; status: string; accent: string; days: Day[] }
 
-const makeDays = (values: Omit<Day, 'day'>[]): Day[] => values.map((item, index) => ({ ...item, day: `Día ${index + 1}` }))
-const profiles: Profile[] = [
-  { id: 'luna', name: 'Luna García', role: 'Comandante · Registro local', initials: 'LG', status: 'En observación', accent: '#74e0c3', days: makeDays([
-    { sleep: 8.1, mood: 8, stress: 2, fatigue: 2, reaction: 284, pulse: 62, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 291, pulse: 64, oxygen: 98, temperature: 36.5 },
-    { sleep: 7.3, mood: 7, stress: 4, fatigue: 4, reaction: 305, pulse: 66, oxygen: 97, temperature: 36.7 },
-    { sleep: 6.2, mood: 6, stress: 6, fatigue: 6, reaction: 342, pulse: 72, oxygen: 97, temperature: 36.8 },
-    { sleep: 6.5, mood: 6, stress: 6, fatigue: 7, reaction: 359, pulse: 75, oxygen: 96, temperature: 36.9 },
-    { sleep: 7.0, mood: 7, stress: 5, fatigue: 5, reaction: 331, pulse: 70, oxygen: 97, temperature: 36.7 },
-    { sleep: 7.4, mood: 7, stress: 4, fatigue: 4, reaction: 312, pulse: 67, oxygen: 98, temperature: 36.6 },
-  ]) },
-  { id: 'marco', name: 'Marco Chen', role: 'Especialista · Registro local', initials: 'MC', status: 'Estable', accent: '#ffb86b', days: makeDays([
-    { sleep: 7.8, mood: 8, stress: 3, fatigue: 2, reaction: 276, pulse: 60, oxygen: 99, temperature: 36.5 },
-    { sleep: 8.0, mood: 8, stress: 2, fatigue: 2, reaction: 270, pulse: 61, oxygen: 99, temperature: 36.5 },
-    { sleep: 7.6, mood: 7, stress: 3, fatigue: 3, reaction: 282, pulse: 63, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.9, mood: 8, stress: 2, fatigue: 2, reaction: 275, pulse: 61, oxygen: 99, temperature: 36.5 },
-    { sleep: 8.2, mood: 9, stress: 2, fatigue: 2, reaction: 268, pulse: 60, oxygen: 99, temperature: 36.4 },
-    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 280, pulse: 62, oxygen: 98, temperature: 36.5 },
-    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 278, pulse: 62, oxygen: 98, temperature: 36.5 },
-  ]) },
-  { id: 'amina', name: 'Amina Okafor', role: 'Ingeniera de vuelo', initials: 'AO', status: 'Estable', accent: '#c3a0ff', days: makeDays([
-    { sleep: 7.4, mood: 8, stress: 3, fatigue: 3, reaction: 289, pulse: 63, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.1, mood: 7, stress: 4, fatigue: 4, reaction: 297, pulse: 65, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 286, pulse: 64, oxygen: 99, temperature: 36.5 },
-    { sleep: 7.8, mood: 8, stress: 2, fatigue: 2, reaction: 280, pulse: 62, oxygen: 99, temperature: 36.5 },
-    { sleep: 7.3, mood: 7, stress: 4, fatigue: 4, reaction: 294, pulse: 66, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 288, pulse: 63, oxygen: 98, temperature: 36.5 },
-    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 284, pulse: 62, oxygen: 99, temperature: 36.5 },
-  ]) },
-  { id: 'diego', name: 'Diego Morales', role: 'Médico de misión', initials: 'DM', status: 'Estable', accent: '#79b9ed', days: makeDays([
-    { sleep: 8.0, mood: 8, stress: 2, fatigue: 2, reaction: 272, pulse: 59, oxygen: 99, temperature: 36.4 },
-    { sleep: 7.8, mood: 8, stress: 3, fatigue: 2, reaction: 279, pulse: 61, oxygen: 99, temperature: 36.5 },
-    { sleep: 7.9, mood: 9, stress: 2, fatigue: 2, reaction: 268, pulse: 60, oxygen: 99, temperature: 36.4 },
-    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 281, pulse: 62, oxygen: 98, temperature: 36.5 },
-    { sleep: 8.1, mood: 8, stress: 2, fatigue: 2, reaction: 270, pulse: 59, oxygen: 99, temperature: 36.4 },
-    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 276, pulse: 61, oxygen: 98, temperature: 36.5 },
-    { sleep: 7.9, mood: 8, stress: 2, fatigue: 2, reaction: 273, pulse: 60, oxygen: 99, temperature: 36.4 },
-  ]) },
-  { id: 'sofia', name: 'Sofía Petrov', role: 'Científica de misión', initials: 'SP', status: 'En observación', accent: '#f58fa8', days: makeDays([
-    { sleep: 7.2, mood: 7, stress: 4, fatigue: 4, reaction: 301, pulse: 66, oxygen: 98, temperature: 36.6 },
-    { sleep: 6.8, mood: 6, stress: 5, fatigue: 5, reaction: 315, pulse: 69, oxygen: 97, temperature: 36.7 },
-    { sleep: 6.5, mood: 6, stress: 6, fatigue: 6, reaction: 328, pulse: 71, oxygen: 97, temperature: 36.8 },
-    { sleep: 7.0, mood: 7, stress: 5, fatigue: 5, reaction: 317, pulse: 69, oxygen: 98, temperature: 36.7 },
-    { sleep: 7.4, mood: 7, stress: 4, fatigue: 4, reaction: 306, pulse: 66, oxygen: 98, temperature: 36.6 },
-    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 294, pulse: 64, oxygen: 98, temperature: 36.5 },
-    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 290, pulse: 63, oxygen: 99, temperature: 36.5 },
-  ]) },
-]
+const profiles: Profile[] = [{ id: 'local', name: 'Tripulante local', role: 'Perfil local sin autenticación', initials: 'TL', status: 'Sin estado clínico', accent: '#74e0c3', days: [] }]
 
 const avg = (values: number[]) => values.reduce((sum, value) => sum + value, 0) / values.length
 export type MissionEvent = { day: string; label: string; detail: string }
@@ -74,7 +27,7 @@ const scenarios: Scenario[] = [
 
 function App() {
   const { view } = useLanguage()
-  const [profileId, setProfileId] = useState(() => localStorage.getItem('cosmic-profile') || 'luna')
+  const [profileId, setProfileId] = useState('local')
   const [tab, setTab] = useState<'resumen' | 'checkin' | 'cognicion' | 'signos' | 'riesgos' | 'emergencia' | 'marte' | 'salida'>('resumen')
   const [scenarioId, setScenarioId] = useState('mars')
   const [metric, setMetric] = useState<MetricKey>('sleep')
@@ -102,7 +55,7 @@ function App() {
   const scenario = scenarios.find((item) => item.id === scenarioId) ?? scenarios[2]
   const ownRecords = history.filter(r => r.profileId === profile.id)
   const todayRecord = ownRecords.find(r => r.date === today)
-  const demoCurrent = profile.days[profile.days.length - 1]
+  const demoCurrent: Day = { day: today, sleep: NaN, mood: NaN, stress: NaN, fatigue: NaN, reaction: NaN, pulse: NaN, oxygen: NaN, temperature: NaN }
   const current = { ...demoCurrent, ...todayRecord?.checkin, reaction: todayRecord?.reaction ?? demoCurrent.reaction }
   const turnContext = readTurnContext(profileId)
   const nextAction = nextStep(!!todayRecord?.checkin, todayRecord?.reaction !== undefined, turnContext.plans.some(plan => reviewedPlan(plan, today)))
