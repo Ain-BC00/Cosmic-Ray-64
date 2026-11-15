@@ -54,6 +54,20 @@ TENDENCIA PERSONAL · EXPLORABLE|EXPLORE PERSONAL TRENDS
 Registros personales|Personal records
 Ejemplos ficticios|Fictional examples
 Datos de la gráfica|Chart data
+REGISTROS PERSONALES · RADAR|PERSONAL RECORDS · RADAR
+HISTORIAL DEL PERFIL|PROFILE HISTORY
+Dimensiones del chequeo diario|Daily check-in dimensions
+Vista normalizada de cada indicador (valor ÷ rango de captura × 10). El número original y sus unidades se muestran al pasar el cursor. No es una puntuación de salud. Sin datos, el eje queda vacío.|Each metric is normalized to a 0–10 scale (value ÷ capture range × 10). Hover to see the original value and units. This is not a health score. The axis is empty when there is no data.
+Registros del perfil seleccionado. Este historial no incluye fecha de calendario ni procedencia de sensor.|Records for the selected profile. This history does not include calendar dates or sensor sources.
+No hay mediciones para comparar|No measurements to compare
+Guarda un chequeo diario para ver sus dimensiones aquí.|Save a daily check-in to see its dimensions here.
+Fecha A|Date A
+Fecha B|Date B
+Sin comparación|No comparison
+Medición original|Original measurement
+Valores sin normalizar; fechas y unidades de entrada|Unnormalized values; dates and input units
+Dimensión|Dimension
+Sin medición|No measurement
 Datos del resumen|Overview data
 EJEMPLOS FICTICIOS · SIN GUARDAR|FICTIONAL EXAMPLES · NOT SAVED
 EJEMPLOS FICTICIOS · SOLO PARA MOSTRAR|FICTIONAL EXAMPLES · FOR PRESENTATION ONLY
