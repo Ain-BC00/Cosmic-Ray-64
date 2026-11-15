@@ -47,36 +47,38 @@
     .metric-card:focus-visible{outline-offset:-3px}
     ::placeholder{color:var(--gris-texto);opacity:1}
     
-    .app-shell{min-height:100vh;display:flex;background:var(--gris-claro)}
-    .sidebar{width:250px;background:var(--azul-marino);color:var(--blanco);padding:30px 18px 22px;display:flex;flex-direction:column;flex-shrink:0}
-    .brand{display:flex;align-items:center;gap:11px;margin:0 12px 28px}
-    .brand-mark{font-size:26px;color:var(--rojo)}
+    .app-shell{min-height:100vh;display:block;background:var(--gris-claro)}
+    .sidebar{position:sticky;top:0;z-index:20;width:100%;background:var(--azul-marino);color:var(--blanco);padding:14px 5vw 0;display:grid;grid-template-columns:minmax(200px,1fr) auto;align-items:center;gap:12px 28px;box-shadow:0 5px 18px rgba(6,27,58,.18);animation:nav-entrar .5s var(--curva-salida) both}
+    .brand{display:flex;align-items:center;gap:11px;margin:0;min-width:0}
+    .brand-mark{display:grid;place-items:center;width:34px;height:34px;color:var(--rojo);flex:none}
+    .brand-mark svg{width:34px;height:34px;overflow:visible;animation:planeta-flotar 4s ease-in-out infinite}
+    .brand-mark circle{fill:var(--rojo)}
+    .planet-ring{fill:none;stroke:var(--rojo);stroke-width:2.4}
     .brand strong{display:block;font:700 14px/1.2 var(--fuente-titulo);letter-spacing:.14em;color:var(--blanco)}
     .brand small,.eyebrow{display:block;font:500 11px var(--fuente-dato);letter-spacing:.06em;color:var(--gris-texto)}
     .sidebar .brand small{color:var(--texto-sobre-oscuro)}
     .mission-focus .eyebrow,.score-card .eyebrow,.event-timer .eyebrow,.emergency-side .eyebrow{color:var(--texto-sobre-oscuro)}
     .panel:has(.chart-wrap) .eyebrow{color:var(--texto-sobre-oscuro)}
-    .demo-pill{border:1px solid #3A5378;color:var(--blanco);font:500 11px var(--fuente-dato);padding:9px 10px;border-radius:var(--radio);margin-bottom:28px;background:var(--azul-espacial)}
+    .demo-pill{border:1px solid #3A5378;color:var(--blanco);font:500 11px var(--fuente-dato);padding:9px 10px;border-radius:var(--radio);margin:0;background:var(--azul-espacial);justify-self:end;white-space:nowrap}
     .demo-pill span,.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}
     .demo-pill span{background:var(--rojo)}
     .status-dot{background:var(--azul-nasa)}
-    nav{display:flex;flex-direction:column;gap:2px}
-    nav button,.help-side{border:0;background:transparent;color:var(--texto-sobre-oscuro);text-align:left;padding:12px 14px;border-radius:0;font:600 13px var(--fuente-texto);cursor:pointer;transition:background-color var(--dur-media) var(--curva-suave),color var(--dur-media) var(--curva-suave),border-color var(--dur-media) var(--curva-suave),transform var(--dur-rapida) var(--curva-suave)}
-    nav button{border-left:3px solid transparent}
-    nav button:hover{background:var(--azul-espacial);color:var(--blanco)}
+    .sidebar nav{grid-column:1/-1;display:flex;flex-direction:row;gap:4px;min-width:0;border-top:1px solid #263d5e;padding-top:8px}
+    .sidebar nav button,.help-side{position:relative;flex:1 1 auto;border:0;background:transparent;color:var(--texto-sobre-oscuro);text-align:center;padding:10px 12px;border-radius:0;font:600 13px var(--fuente-texto);cursor:pointer;white-space:nowrap;transition:background-color var(--dur-media) var(--curva-suave),color var(--dur-media) var(--curva-suave),border-color var(--dur-media) var(--curva-suave),transform var(--dur-rapida) var(--curva-suave);animation:nav-item-entrar .42s var(--curva-salida) both}
+    .sidebar nav button:nth-child(2){animation-delay:.03s}.sidebar nav button:nth-child(3){animation-delay:.06s}.sidebar nav button:nth-child(4){animation-delay:.09s}.sidebar nav button:nth-child(5){animation-delay:.12s}.sidebar nav button:nth-child(6){animation-delay:.15s}.sidebar nav button:nth-child(7){animation-delay:.18s}.sidebar nav button:nth-child(8){animation-delay:.21s}
+    .sidebar nav button::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:var(--rojo);transform:scaleX(0);transform-origin:center;transition:transform var(--dur-media) var(--curva-salida)}
+    .sidebar nav button:hover{background:var(--azul-espacial);color:var(--blanco)}
     nav button:active,.help-side:active{transform:scale(.98)}
-    nav button span{font-size:18px;width:27px;display:inline-block;color:var(--texto-sobre-oscuro);vertical-align:-2px;transition:transform var(--dur-media) var(--curva-resorte),color var(--dur-media) var(--curva-suave)}
-    nav button:hover span{transform:translateX(3px)}
-    nav button.active{background:var(--azul-espacial);color:var(--blanco);border-left-color:var(--rojo)}
-    nav button.active span{color:var(--blanco)}
-    .sidebar-bottom{margin-top:auto}
+    .sidebar nav button.active{background:var(--azul-espacial);color:var(--blanco)}
+    .sidebar nav button.active::after{transform:scaleX(1)}
+    .sidebar-bottom{display:none}
     .connection{color:var(--texto-sobre-oscuro);font-size:12px;margin:0 12px 18px}
     .connection i{display:inline-block;width:6px;height:6px;background:var(--azul-claro);border-radius:50%;margin-right:6px}
     .sidebar-bottom p{font-size:11px;color:var(--texto-sobre-oscuro);line-height:1.6;margin:0 12px 18px}
     .help-side{width:100%;color:var(--blanco);border:1px solid #3A5378;text-align:center;background:transparent}
     .help-side:hover{background:var(--azul-espacial)}
     
-    .main-content{max-width:1420px;width:100%;margin:0 auto;padding:34px 5vw 56px}
+    .main-content{max-width:1420px;width:100%;margin:0 auto;padding:26px 5vw 56px}
     .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid var(--azul-marino)}
     h1{font-size:32px;letter-spacing:-.01em;line-height:1.1;margin:8px 0 0}
     .top-actions{display:flex;gap:14px;align-items:center}
@@ -292,7 +294,8 @@
     .close-inline:hover{color:var(--blanco);transform:rotate(90deg)}
     
     @media(max-width:900px){
-    .sidebar{width:210px}
+    .sidebar{padding-left:3vw;padding-right:3vw}
+    .sidebar nav button{padding-left:8px;padding-right:8px;font-size:12px}
     .content-grid{grid-template-columns:1fr}
     .metric-grid{grid-template-columns:repeat(2,1fr)}
     .risk-grid{grid-template-columns:repeat(2,1fr)}
@@ -303,14 +306,14 @@
     
     @media(max-width:650px){
     .app-shell{display:block}
-    .sidebar{width:auto;padding:18px 15px}
-    .brand{margin-bottom:15px}
-    .demo-pill{margin-bottom:12px}
-    nav{display:grid;grid-template-columns:repeat(4,1fr)}
-    nav button{padding:8px 4px;text-align:center;font-size:11px;border-left:0;border-bottom:3px solid transparent}
-    nav button.active{border-bottom-color:var(--rojo)}
-    nav button span{display:block;width:auto}
-    .sidebar-bottom{display:none}
+    .sidebar{width:100%;padding:12px 14px 0;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
+    .brand{margin:0;gap:8px}
+    .brand-mark,.brand-mark svg{width:30px;height:30px}
+    .brand strong{font-size:12px}
+    .brand small{font-size:9px}
+    .demo-pill{max-width:48vw;overflow:hidden;text-overflow:ellipsis;font-size:9px;padding:7px 8px}
+    .sidebar nav{justify-content:flex-start;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;margin-right:-14px;padding:7px 14px 0 0}
+    .sidebar nav button{flex:0 0 auto;padding:9px 12px;text-align:center;font-size:11px}
     .main-content{padding:24px 16px 40px}
     .topbar{align-items:flex-start}
     .topbar h1{font-size:26px}
@@ -477,6 +480,9 @@
     @keyframes destacar{from{transform:scale(.94)}to{transform:scale(1)}}
     @keyframes confirmar{0%{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
     @keyframes brillo-carga{from{background-position:200% 0}to{background-position:-200% 0}}
+    @keyframes nav-entrar{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes nav-item-entrar{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes planeta-flotar{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(2deg)}}
     
     @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}

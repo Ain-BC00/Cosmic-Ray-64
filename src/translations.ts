@@ -8,6 +8,7 @@ Riesgos de misión|Mission risks
 Modo Marte|Mars mode
 Preparar salida|Plan an EVA
 Emergencia|Emergency
+Navegación principal|Main navigation
 Estado de hoy|Today's status
 Rendimiento cognitivo|Cognitive performance
 Preparación de salida|EVA preparation

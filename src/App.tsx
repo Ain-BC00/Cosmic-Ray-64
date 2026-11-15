@@ -73,7 +73,7 @@ const scenarios: Scenario[] = [
 ]
 
 function App() {
-  const { view } = useLanguage()
+  const { view, t } = useLanguage()
   const [profileId, setProfileId] = useState('luna')
   const [tab, setTab] = useState<'resumen' | 'checkin' | 'cognicion' | 'signos' | 'riesgos' | 'emergencia' | 'marte' | 'salida'>('resumen')
   const [scenarioId, setScenarioId] = useState('mars')
@@ -145,9 +145,9 @@ function App() {
 
   return view(<div className="app-shell">
     <aside className="sidebar" inert={showTurn}>
-      <div className="brand"><span className="brand-mark">✦</span><div><strong>COSMIC RAY</strong><small>HEALTH CONSOLE · 64</small></div></div>
-      <div className="demo-pill"><span /> {tab === 'resumen' && isExample ? 'HISTORIAL DEL PERFIL' : 'LOCAL · REGISTROS PROPIOS'}</div>
-      <nav>{[['resumen', '◈', 'Resumen'], ['checkin', '◷', 'Chequeo diario'], ['cognicion', '⌁', 'Cognición'], ['signos', '♢', 'Signos vitales'], ['riesgos', '△', 'Riesgos de misión'], ['marte', '↗', 'Modo Marte'], ['salida', '☀', 'Preparar salida'], ['emergencia', '＋', 'Emergencia']].map(([id, icon, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => setTab(id as typeof tab)}><span>{icon}</span>{label}</button>)}</nav>
+      <div className="brand"><span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" focusable="false"><ellipse className="planet-ring" cx="20" cy="20" rx="18" ry="6.5" transform="rotate(-28 20 20)"/><circle cx="20" cy="20" r="9"/></svg></span><div><strong>COSMIC RAY</strong><small>HEALTH CONSOLE · 64</small></div></div>
+      <div className="demo-pill"><span /> {tab === 'resumen' && isExample ? t('HISTORIAL DEL PERFIL') : t('LOCAL · REGISTROS PROPIOS')}</div>
+      <nav aria-label={t('Navegación principal')}>{[['resumen', 'Resumen'], ['checkin', 'Chequeo diario'], ['cognicion', 'Cognición'], ['signos', 'Signos vitales'], ['riesgos', 'Riesgos de misión'], ['marte', 'Modo Marte'], ['salida', 'Preparar salida'], ['emergencia', 'Emergencia']].map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined} onClick={() => setTab(id as typeof tab)}>{t(label)}</button>)}</nav>
       <div className="sidebar-bottom"><div className="connection"><i /> Almacenamiento local activo</div><p>Sin conexión a comunicaciones reales. Esta interfaz apoya la conversación con la tripulación y el personal médico.</p></div>
     </aside>
     <main className="main-content" inert={showTurn}>
