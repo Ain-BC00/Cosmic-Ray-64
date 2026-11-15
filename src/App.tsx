@@ -13,7 +13,55 @@ export type MetricKey = 'sleep' | 'mood' | 'stress' | 'fatigue' | 'reaction'
 export type Day = { day: string; sleep: number; mood: number; stress: number; fatigue: number; reaction: number; pulse: number; oxygen: number; temperature: number }
 type Profile = { id: string; name: string; role: string; initials: string; status: string; accent: string; days: Day[] }
 
-const profiles: Profile[] = [{ id: 'local', name: 'Tripulante local', role: 'Perfil local sin autenticación', initials: 'TL', status: 'Sin estado clínico', accent: '#74e0c3', days: [] }]
+const makeDays = (values: Omit<Day, 'day'>[]): Day[] => values.map((item, index) => ({ ...item, day: `Día ${index + 1}` }))
+const profiles: Profile[] = [
+  { id: 'luna', name: 'Luna García', role: 'Comandante · Registro local', initials: 'LG', status: 'En observación', accent: '#74e0c3', days: makeDays([
+    { sleep: 8.1, mood: 8, stress: 2, fatigue: 2, reaction: 284, pulse: 62, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 291, pulse: 64, oxygen: 98, temperature: 36.5 },
+    { sleep: 7.3, mood: 7, stress: 4, fatigue: 4, reaction: 305, pulse: 66, oxygen: 97, temperature: 36.7 },
+    { sleep: 6.2, mood: 6, stress: 6, fatigue: 6, reaction: 342, pulse: 72, oxygen: 97, temperature: 36.8 },
+    { sleep: 6.5, mood: 6, stress: 6, fatigue: 7, reaction: 359, pulse: 75, oxygen: 96, temperature: 36.9 },
+    { sleep: 7.0, mood: 7, stress: 5, fatigue: 5, reaction: 331, pulse: 70, oxygen: 97, temperature: 36.7 },
+    { sleep: 7.4, mood: 7, stress: 4, fatigue: 4, reaction: 312, pulse: 67, oxygen: 98, temperature: 36.6 },
+  ]) },
+  { id: 'marco', name: 'Marco Chen', role: 'Especialista · Registro local', initials: 'MC', status: 'Estable', accent: '#ffb86b', days: makeDays([
+    { sleep: 7.8, mood: 8, stress: 3, fatigue: 2, reaction: 276, pulse: 60, oxygen: 99, temperature: 36.5 },
+    { sleep: 8.0, mood: 8, stress: 2, fatigue: 2, reaction: 270, pulse: 61, oxygen: 99, temperature: 36.5 },
+    { sleep: 7.6, mood: 7, stress: 3, fatigue: 3, reaction: 282, pulse: 63, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.9, mood: 8, stress: 2, fatigue: 2, reaction: 275, pulse: 61, oxygen: 99, temperature: 36.5 },
+    { sleep: 8.2, mood: 9, stress: 2, fatigue: 2, reaction: 268, pulse: 60, oxygen: 99, temperature: 36.4 },
+    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 280, pulse: 62, oxygen: 98, temperature: 36.5 },
+    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 278, pulse: 62, oxygen: 98, temperature: 36.5 },
+  ]) },
+  { id: 'amina', name: 'Amina Okafor', role: 'Ingeniera de vuelo', initials: 'AO', status: 'Estable', accent: '#c3a0ff', days: makeDays([
+    { sleep: 7.4, mood: 8, stress: 3, fatigue: 3, reaction: 289, pulse: 63, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.1, mood: 7, stress: 4, fatigue: 4, reaction: 297, pulse: 65, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 286, pulse: 64, oxygen: 99, temperature: 36.5 },
+    { sleep: 7.8, mood: 8, stress: 2, fatigue: 2, reaction: 280, pulse: 62, oxygen: 99, temperature: 36.5 },
+    { sleep: 7.3, mood: 7, stress: 4, fatigue: 4, reaction: 294, pulse: 66, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 288, pulse: 63, oxygen: 98, temperature: 36.5 },
+    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 284, pulse: 62, oxygen: 99, temperature: 36.5 },
+  ]) },
+  { id: 'diego', name: 'Diego Morales', role: 'Médico de misión', initials: 'DM', status: 'Estable', accent: '#79b9ed', days: makeDays([
+    { sleep: 8.0, mood: 8, stress: 2, fatigue: 2, reaction: 272, pulse: 59, oxygen: 99, temperature: 36.4 },
+    { sleep: 7.8, mood: 8, stress: 3, fatigue: 2, reaction: 279, pulse: 61, oxygen: 99, temperature: 36.5 },
+    { sleep: 7.9, mood: 9, stress: 2, fatigue: 2, reaction: 268, pulse: 60, oxygen: 99, temperature: 36.4 },
+    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 281, pulse: 62, oxygen: 98, temperature: 36.5 },
+    { sleep: 8.1, mood: 8, stress: 2, fatigue: 2, reaction: 270, pulse: 59, oxygen: 99, temperature: 36.4 },
+    { sleep: 7.7, mood: 8, stress: 3, fatigue: 3, reaction: 276, pulse: 61, oxygen: 98, temperature: 36.5 },
+    { sleep: 7.9, mood: 8, stress: 2, fatigue: 2, reaction: 273, pulse: 60, oxygen: 99, temperature: 36.4 },
+  ]) },
+  { id: 'sofia', name: 'Sofía Petrov', role: 'Científica de misión', initials: 'SP', status: 'En observación', accent: '#f58fa8', days: makeDays([
+    { sleep: 7.2, mood: 7, stress: 4, fatigue: 4, reaction: 301, pulse: 66, oxygen: 98, temperature: 36.6 },
+    { sleep: 6.8, mood: 6, stress: 5, fatigue: 5, reaction: 315, pulse: 69, oxygen: 97, temperature: 36.7 },
+    { sleep: 6.5, mood: 6, stress: 6, fatigue: 6, reaction: 328, pulse: 71, oxygen: 97, temperature: 36.8 },
+    { sleep: 7.0, mood: 7, stress: 5, fatigue: 5, reaction: 317, pulse: 69, oxygen: 98, temperature: 36.7 },
+    { sleep: 7.4, mood: 7, stress: 4, fatigue: 4, reaction: 306, pulse: 66, oxygen: 98, temperature: 36.6 },
+    { sleep: 7.6, mood: 8, stress: 3, fatigue: 3, reaction: 294, pulse: 64, oxygen: 98, temperature: 36.5 },
+    { sleep: 7.5, mood: 8, stress: 3, fatigue: 3, reaction: 290, pulse: 63, oxygen: 99, temperature: 36.5 },
+  ]) },
+  { id: 'local', name: 'Tripulante local', role: 'Perfil personal local', initials: 'TL', status: 'Sin estado clínico', accent: '#74e0c3', days: [] },
+]
 
 const avg = (values: number[]) => values.reduce((sum, value) => sum + value, 0) / values.length
 export type MissionEvent = { day: string; label: string; detail: string }
@@ -39,6 +87,7 @@ function App() {
   const [history, setHistory] = useState<DailyRecord[]>(readHistory)
   const [today, setToday] = useState(localDate)
   const persistRecord = (patch: Partial<Pick<DailyRecord, 'checkin' | 'reaction'>>) => {
+    if (profileId !== 'local') { setNotice('Modo simulación: no se guardaron datos personales.'); return false }
     try {
       const next = upsertRecord(readHistory(), profileId, localDate(), patch)
       localStorage.setItem('cosmic-daily-v1', JSON.stringify(next))
@@ -53,9 +102,9 @@ function App() {
   const reactionTimerRef = useRef<number | null>(null)
   const profile = profiles.find((item) => item.id === profileId) ?? profiles[0]
   const scenario = scenarios.find((item) => item.id === scenarioId) ?? scenarios[2]
-  const ownRecords = history.filter(r => r.profileId === profile.id)
+  const ownRecords = profile.id === 'local' ? history.filter(r => r.profileId === profile.id) : []
   const todayRecord = ownRecords.find(r => r.date === today)
-  const demoCurrent: Day = { day: today, sleep: NaN, mood: NaN, stress: NaN, fatigue: NaN, reaction: NaN, pulse: NaN, oxygen: NaN, temperature: NaN }
+  const demoCurrent: Day = profile.days[profile.days.length - 1] ?? { day: today, sleep: NaN, mood: NaN, stress: NaN, fatigue: NaN, reaction: NaN, pulse: NaN, oxygen: NaN, temperature: NaN }
   const current = { ...demoCurrent, ...todayRecord?.checkin, reaction: todayRecord?.reaction ?? demoCurrent.reaction }
   const turnContext = readTurnContext(profileId)
   const nextAction = nextStep(!!todayRecord?.checkin, todayRecord?.reaction !== undefined, turnContext.plans.some(plan => reviewedPlan(plan, today)))
@@ -78,7 +127,7 @@ function App() {
   const hasBaseline = Object.values(baseline).every(Number.isFinite)
   const personalAssessment = assessWellbeing(current, baseline, !!todayRecord?.checkin, hasReaction)
   const alerts = personalAssessment.alerts
-  const isExample = chartSource === 'example'
+  const isExample = profile.id !== 'local' || chartSource === 'example'
   const exampleBaseline = Object.fromEntries((['sleep', 'mood', 'stress', 'fatigue', 'reaction'] as MetricKey[]).map(key => [key, avg(profile.days.slice(0, 3).map(day => day[key]))])) as Record<MetricKey, number>
   const summaryCurrent = isExample ? demoCurrent : current
   const summaryAssessment = isExample ? assessWellbeing(demoCurrent, exampleBaseline, true, true) : personalAssessment
@@ -104,13 +153,13 @@ function App() {
       <div className="sidebar-bottom"><div className="connection"><i /> Almacenamiento local activo</div><p>Sin conexión a comunicaciones reales. Esta interfaz apoya la conversación con la tripulación y el personal médico.</p></div>
     </aside>
     <main className="main-content" inert={showTurn}>
-      <header className="topbar"><div><span className="eyebrow">MISIÓN · {scenario.name.toUpperCase()}</span><h1>{tab === 'resumen' ? 'Estado de hoy' : tab === 'checkin' ? 'Chequeo diario' : tab === 'cognicion' ? 'Rendimiento cognitivo' : tab === 'signos' ? 'Signos vitales' : tab === 'riesgos' ? 'Riesgos de misión' : tab === 'salida' ? 'Preparación de salida' : tab === 'marte' ? 'Modo Marte' : 'Modo emergencia'}</h1></div><div className="top-actions"><LanguagePicker /><label className="profile-select"><span>TRIPULANTE</span><select value={profileId} onChange={(e) => setProfileId(e.target.value)}>{profiles.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></label><div className="avatar" style={{ background: profile.accent }}>{profile.initials}</div></div></header>
+      <header className="topbar"><div><span className="eyebrow">MISIÓN · {scenario.name.toUpperCase()}</span><h1>{tab === 'resumen' ? 'Estado de hoy' : tab === 'checkin' ? 'Chequeo diario' : tab === 'cognicion' ? 'Rendimiento cognitivo' : tab === 'signos' ? 'Signos vitales' : tab === 'riesgos' ? 'Riesgos de misión' : tab === 'salida' ? 'Preparación de salida' : tab === 'marte' ? 'Modo Marte' : 'Modo emergencia'}</h1></div><div className="top-actions"><LanguagePicker /><label className="profile-select"><span>TRIPULANTE</span><select value={profileId} onChange={(e) => { const id = e.target.value; setProfileId(id); setChartSource(id === "local" ? "personal" : "example") }}>{profiles.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></label><div className="avatar" style={{ background: profile.accent }}>{profile.initials}</div></div></header>
       <section className="demo-banner"><span>◉</span><div><strong>Registro local</strong><details><summary>Uso y límites</summary><p>El chequeo y la prueba cognitiva usan tus entradas y mediciones realizadas en esta pantalla. La aplicación no diagnostica ni reemplaza una evaluación médica.</p></details></div><span className="banner-tag">REGISTROS LOCALES</span></section>
       {tab === 'resumen' && <>
-        {isExample ? <section className="next-step panel example-summary" role="status"><div><span className="eyebrow">EJEMPLOS FICTICIOS · SOLO PARA MOSTRAR</span><h2>Resumen con datos ficticios</h2><p>Tarjetas, índice, señales y gráfica usan el mismo historial de ejemplo. No se guardan como registros personales. Cambia de tripulante para explorar otros ejemplos.</p></div><button className="outline-button" onClick={() => { setChartSource('personal'); setSelectedEvent(null) }}>Volver a registros personales</button></section> : <section className="next-step panel"><div><span className="eyebrow">TU SIGUIENTE PASO · {profile.name}</span><h2>{nextAction.title}</h2><p>{nextAction.text}</p></div><div className="exit-actions"><button className="primary-button" onClick={() => setTab(nextAction.tab)}>{nextAction.action}</button><button className="outline-button" onClick={() => setShowTurn(true)}>Resumen del turno</button></div></section>}
+        {isExample ? <section className="next-step panel example-summary" role="status"><div><span className="eyebrow">EJEMPLOS FICTICIOS · SOLO PARA MOSTRAR</span><h2>Resumen con datos ficticios</h2><p>Tarjetas, índice, señales y gráfica usan el mismo historial de ejemplo. No se guardan como registros personales. Cambia de tripulante para explorar otros ejemplos.</p></div><button className="outline-button" onClick={() => { setProfileId('local'); setChartSource('personal'); setSelectedEvent(null) }}>Volver a registros personales</button></section> : <section className="next-step panel"><div><span className="eyebrow">TU SIGUIENTE PASO · {profile.name}</span><h2>{nextAction.title}</h2><p>{nextAction.text}</p></div><div className="exit-actions"><button className="primary-button" onClick={() => setTab(nextAction.tab)}>{nextAction.action}</button><button className="outline-button" onClick={() => setShowTurn(true)}>Resumen del turno</button></div></section>}
         <section className="hero-row"><div><span className="eyebrow">{isExample ? 'EJEMPLO FICTICIO' : 'LECTURA INTEGRAL'} · {profile.name}</span><div className="status-line"><span className="status-dot" /> <strong>{!isExample && !todayRecord ? 'Sin registros de hoy' : !isExample && !hasBaseline ? 'Construyendo tu referencia' : summaryAlerts.length ? 'Observar evolución' : 'Dentro de tu rango habitual'}</strong></div><p className="hero-copy">{isExample ? `Día final del historial ficticio: ${demoCurrent.day}. Referencia: primeros tres días del ejemplo. Índice ilustrativo, no un porcentaje de salud.` : `Registros de ${today}. ${todayRecord?.checkin ? 'Chequeo personal guardado.' : 'Falta el chequeo diario.'} ${hasReaction ? 'Reacción medida hoy.' : 'Falta la prueba de reacción de hoy.'}`} {!isExample && (hasBaseline ? 'Referencia: primeros tres registros previos por indicador; índice orientativo.' : 'Referencia personal pendiente: se necesitan al menos tres fechas previas por indicador.')}</p></div><div className="score-card"><span>{isExample ? 'ÍNDICE ILUSTRATIVO · EJEMPLO' : 'ÍNDICE DE BIENESTAR'}</span><strong>{summaryScore ?? '—'}<small>/100</small></strong><div className="score-bar"><i style={{ width: `${summaryScore ?? 0}%` }} /></div><small>{summaryScore === null ? 'Faltan registros o referencia personal' : summaryAlerts.length ? `${summaryAlerts.length} señal${summaryAlerts.length === 1 ? '' : 'es'} para revisar` : 'Patrón estable hoy'}</small></div></section>
         <section className="metric-grid">{[['sleep', 'Sueño', !isExample && !todayRecord?.checkin ? '—' : `${summaryCurrent.sleep} h`, isExample ? 'Dato ficticio de ejemplo' : todayRecord?.checkin ? 'Entrada personal de hoy' : 'Pendiente de registro', 'moon'], ['mood', 'Ánimo', !isExample && !todayRecord?.checkin ? '—' : `${summaryCurrent.mood}/10`, isExample ? 'Dato ficticio de ejemplo' : todayRecord?.checkin ? 'Entrada personal de hoy' : 'Pendiente de registro', 'sun'], ['stress', 'Estrés percibido', !isExample && !todayRecord?.checkin ? '—' : `${summaryCurrent.stress}/10`, isExample ? 'Dato ficticio de ejemplo' : todayRecord?.checkin ? 'Entrada personal de hoy' : 'Pendiente de registro', 'bolt'], ['fatigue', 'Cansancio', !isExample && !todayRecord?.checkin ? '—' : `${summaryCurrent.fatigue}/10`, isExample ? 'Dato ficticio de ejemplo' : todayRecord?.checkin ? 'Entrada personal de hoy' : 'Pendiente de registro', 'battery']].map(([key, label, value, sub, icon]) => <button className="metric-card" key={key} onClick={() => { setMetric(key as MetricKey); setTab('resumen') }}><div className={`metric-icon ${icon}`}>{icon === 'moon' ? '☾' : icon === 'sun' ? '☼' : icon === 'bolt' ? 'ϟ' : '▰'}</div><span>{label}</span><strong>{value}</strong><small className={key === 'fatigue' ? 'warn-text' : ''}>{sub}</small></button>)}</section>
-        <section className="content-grid"><Suspense fallback={<div className="panel loading-panel" role="status">Cargando gráfica…</div>}><TrendExplorer source={chartSource} setSource={setChartSource} metric={metric} setMetric={setMetric} period={chartPeriod} setPeriod={setChartPeriod} data={chartData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} /></Suspense><div className="panel alerts-panel"><div className="panel-head"><div><span className="eyebrow">LECTURAS EXPLICABLES</span><h2>{isExample ? 'Señales del ejemplo' : 'Señales de hoy'} <b>{summaryAlerts.length}</b></h2></div><span className="info">i</span></div>{summaryAlerts.length ? summaryAlerts.map((alert) => <div className={`alert ${alert.tone}`} key={alert.title}><div className="alert-icon">{alert.tone === 'amber' ? '!' : 'i'}</div><div><strong>{alert.title}</strong><p>{alert.text}</p></div></div>) : <div className="empty-state"><span>✓</span><strong>Sin señales destacadas</strong><p>Las señales se muestran cuando hay registros y una referencia personal suficiente.</p></div>}<button className="text-button" onClick={() => { setChartSource('personal'); setSelectedEvent(null); setTab('checkin') }}>{isExample ? 'Registrar mis datos personales' : 'Completar chequeo de hoy'} <span>→</span></button></div></section>
+        <section className="content-grid"><Suspense fallback={<div className="panel loading-panel" role="status">Cargando gráfica…</div>}><TrendExplorer source={chartSource} setSource={setChartSource} metric={metric} setMetric={setMetric} period={chartPeriod} setPeriod={setChartPeriod} data={chartData} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} /></Suspense><div className="panel alerts-panel"><div className="panel-head"><div><span className="eyebrow">LECTURAS EXPLICABLES</span><h2>{isExample ? 'Señales del ejemplo' : 'Señales de hoy'} <b>{summaryAlerts.length}</b></h2></div><span className="info">i</span></div>{summaryAlerts.length ? summaryAlerts.map((alert) => <div className={`alert ${alert.tone}`} key={alert.title}><div className="alert-icon">{alert.tone === 'amber' ? '!' : 'i'}</div><div><strong>{alert.title}</strong><p>{alert.text}</p></div></div>) : <div className="empty-state"><span>✓</span><strong>Sin señales destacadas</strong><p>Las señales se muestran cuando hay registros y una referencia personal suficiente.</p></div>}<button className="text-button" onClick={() => { setProfileId('local'); setChartSource('personal'); setSelectedEvent(null); setTab('checkin') }}>{isExample ? 'Registrar mis datos personales' : 'Completar chequeo de hoy'} <span>→</span></button></div></section>
       </>}
       {tab === 'checkin' && <Checkin key={`${profileId}-${today}`} initial={todayRecord?.checkin} onDone={values => persistRecord({ checkin: values })} done={!!todayRecord?.checkin} />}
       {tab === 'marte' && <MarsMode key={profileId} profileId={profileId} profileName={profile.name} record={todayRecord} history={ownRecords} alerts={alerts.map(a => a.title)} onCheckin={() => setTab('checkin')} onReaction={() => setTab('cognicion')} onNotice={setNotice} />}
