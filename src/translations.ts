@@ -323,6 +323,37 @@ Resumen de turno guardado en este dispositivo|Shift handover saved on this devic
 COORDINACIÓN LOCAL|LOCAL COORDINATION
 Organiza responsabilidades y observaciones. Sigue el procedimiento aprobado de la misión. Esta pantalla no contacta servicios externos.|Organize responsibilities and observations. Follow the mission's approved procedure. This screen does not contact external services.
 Registro activo|Active record
+ASISTENCIA LOCAL ·|LOCAL ASSISTANCE ·
+La guía local no espera una respuesta de Tierra. Esta aplicación no sustituye los protocolos de misión ni al personal médico.|The local guide does not wait for a response from Earth. This app does not replace mission protocols or medical personnel.
+Procedimiento aprobado no disponible|Approved procedure unavailable
+No hay protocolos clínicos autorizados ni inventario de misión cargados. No se mostrarán instrucciones de tratamiento o dosis. Consulta la documentación médica controlada de la misión y a la autoridad médica disponible.|No authorized clinical protocols or mission inventory are loaded. Treatment or dosage instructions will not be shown. Consult the mission's controlled medical documentation and the available medical authority.
+Categoría|Category
+Selecciona categoría|Select a category
+Signos u observaciones|Signs or observations
+Describe lo observado, sin diagnosticar|Describe what you observe, without diagnosing
+Iniciar emergencia|Start emergency
+Finalizar registro|Close record
+Preparar informe para Tierra|Prepare report for Earth
+Descargar informe|Download report
+Mensajes pendientes en este dispositivo:|Pending messages on this device:
+Estado: esperando transmisión. No existe enlace de comunicaciones configurado.|Status: waiting for transmission. No communications link is configured.
+Registro de coordinación|Coordination record
+Mantén la comunicación con la tripulación y asigna quién coordina.|Maintain communication with the crew and assign a coordinator.
+Registra el inicio y describe signos observados, sin interpretarlos.|Record the start time and describe observed signs without interpreting them.
+Consulta el procedimiento local aprobado para esta categoría.|Consult the approved local procedure for this category.
+Confirma los recursos requeridos en el inventario oficial de la misión.|Confirm the required resources in the official mission inventory.
+Registra observaciones, cambios y hora de cada acción.|Record observations, changes, and the time of each action.
+Prepara el informe para transmisión y conserva la guía local mientras esperas.|Prepare the report for transmission and keep the local guide available while you wait.
+Notas y tiempos|Notes and times
+Observaciones registradas por la tripulación|Observations recorded by the crew
+ASIGNACIÓN DE ROLES|ROLE ASSIGNMENT
+Coordinación|Coordination
+Comunicaciones|Communications
+Usa el procedimiento de misión guardado y autorizado. Esta pantalla no inventa acciones clínicas.|Use the saved, approved mission procedure. This screen does not invent clinical actions.
+No se pudo guardar localmente. Descarga el informe antes de salir.|Could not save locally. Download the report before leaving.
+Inicia el registro antes de preparar el informe.|Start the record before preparing the report.
+No se pudo guardar el informe en la cola local.|Could not save the report to the local queue.
+No se pudo archivar el evento anterior.|Could not archive the previous event.
 Evento finalizado|Event closed
 Sin iniciar|Not started
 TIEMPO DEL EVENTO|EVENT TIMER
