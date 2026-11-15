@@ -48,7 +48,14 @@
     ::placeholder{color:var(--gris-texto);opacity:1}
     
     .app-shell{min-height:100vh;display:block;background:var(--gris-claro)}
-    .sidebar{position:sticky;top:0;z-index:20;width:100%;background:var(--azul-marino);color:var(--blanco);padding:14px 5vw 0;display:grid;grid-template-columns:minmax(200px,1fr) auto;align-items:center;gap:12px 28px;box-shadow:0 5px 18px rgba(6,27,58,.18);animation:nav-entrar .5s var(--curva-salida) both}
+    .sidebar{position:sticky;top:0;z-index:20;width:100%;background:var(--azul-marino);color:var(--blanco);padding:14px 5vw 0;display:grid;grid-template-columns:minmax(200px,1fr) auto;align-items:center;gap:12px 28px;box-shadow:0 5px 18px rgba(6,27,58,.18);animation:nav-entrar .5s var(--curva-salida) both;overflow:hidden}
+    .sidebar::before{content:"";position:absolute;inset:0;width:100%;pointer-events:none;opacity:.88;background:radial-gradient(ellipse at 47% 45%,rgba(111,155,232,.13),transparent 36%),radial-gradient(ellipse at 70% 58%,rgba(198,45,20,.07),transparent 30%),linear-gradient(118deg,transparent 0 44%,rgba(180,194,214,.12) 44.2% 44.35%,transparent 44.6% 100%),linear-gradient(158deg,transparent 0 63%,rgba(111,155,232,.1) 63.2% 63.35%,transparent 63.7% 100%),radial-gradient(circle at 91% 38%,rgba(111,155,232,.38) 0 31px,rgba(111,155,232,.16) 32px 48px,transparent 49px),radial-gradient(circle at 86% 31%,rgba(252,61,33,.3) 0 4px,transparent 5px),radial-gradient(circle at 8% 30%,rgba(255,255,255,.92) 0 1.5px,transparent 2px),radial-gradient(circle at 17% 72%,rgba(180,194,214,.9) 0 1.5px,transparent 2px),radial-gradient(circle at 29% 19%,rgba(255,255,255,.88) 0 1.5px,transparent 2px),radial-gradient(circle at 42% 62%,rgba(180,194,214,.88) 0 1.5px,transparent 2px),radial-gradient(circle at 56% 25%,rgba(255,255,255,.9) 0 1.5px,transparent 2px),radial-gradient(circle at 68% 76%,rgba(180,194,214,.85) 0 1.5px,transparent 2px),radial-gradient(circle at 79% 14%,rgba(255,255,255,.88) 0 1.5px,transparent 2px),radial-gradient(circle at 96% 73%,rgba(180,194,214,.9) 0 1.5px,transparent 2px);background-repeat:no-repeat;animation:header-stars-drift 16s ease-in-out infinite alternate}
+    .sidebar::after{content:"";position:absolute;right:3%;top:5px;width:340px;height:132px;border:2px solid rgba(111,155,232,.34);border-radius:50%;transform:rotate(-17deg);pointer-events:none;box-shadow:0 0 30px rgba(111,155,232,.14);animation:header-orbit-pulse 7s ease-in-out infinite alternate}
+    .sidebar>*{position:relative;z-index:1}
+    .header-cosmos{position:absolute!important;inset:0;z-index:0!important;pointer-events:none;overflow:hidden}
+    .cosmic-nebula{position:absolute;left:25%;top:-65px;width:390px;height:170px;border-radius:50%;background:radial-gradient(ellipse,rgba(111,155,232,.13),rgba(111,155,232,.04) 42%,transparent 70%);filter:blur(9px);animation:nebula-breathe 9s ease-in-out infinite alternate}
+    .cosmic-ray{position:absolute;display:block;width:180px;height:2px;border-radius:50%;background:linear-gradient(90deg,transparent,var(--azul-claro),var(--blanco),transparent);opacity:0;filter:blur(.25px);transform:rotate(-18deg);animation:cosmic-ray-pass 8s linear infinite}
+    .cosmic-ray-one{left:16%;top:29%;animation-delay:-2s}.cosmic-ray-two{left:46%;top:64%;width:145px;transform:rotate(-12deg);animation-delay:-5s}.cosmic-ray-three{left:68%;top:22%;width:125px;transform:rotate(-25deg);animation-delay:-7s}
     .brand{display:flex;align-items:center;gap:11px;margin:0;min-width:0}
     .brand-mark{display:grid;place-items:center;width:34px;height:34px;color:var(--rojo);flex:none}
     .brand-mark svg{width:34px;height:34px;overflow:visible;animation:planeta-flotar 4s ease-in-out infinite}
@@ -483,6 +490,10 @@
     @keyframes nav-entrar{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
     @keyframes nav-item-entrar{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
     @keyframes planeta-flotar{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(2deg)}}
+    @keyframes header-stars-drift{0%{opacity:.62;transform:translate3d(-10px,1px,0)}50%{opacity:1;transform:translate3d(6px,-2px,0)}100%{opacity:.76;transform:translate3d(12px,3px,0)}}
+    @keyframes header-orbit-pulse{0%{opacity:.62;transform:rotate(-17deg) scale(.98);box-shadow:0 0 20px rgba(111,155,232,.08)}100%{opacity:1;transform:rotate(-14deg) scale(1.04);box-shadow:0 0 34px rgba(111,155,232,.2)}}
+    @keyframes nebula-breathe{from{opacity:.35;transform:translate3d(-18px,3px,0) scale(.92)}to{opacity:.9;transform:translate3d(25px,-5px,0) scale(1.12)}}
+    @keyframes cosmic-ray-pass{0%{opacity:0;transform:translate3d(-130px,18px,0) rotate(-18deg) scaleX(.55)}18%{opacity:.7}42%{opacity:.22}72%{opacity:.65}100%{opacity:0;transform:translate3d(360px,-22px,0) rotate(-18deg) scaleX(1.15)}}
     
     @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -491,6 +502,7 @@
     input[type=range]::-moz-range-thumb{transition:none!important}
     .mars-link progress::-webkit-progress-value{transition:none!important}
     .mars-link progress::-moz-progress-bar{transition:none!important}
+    .sidebar::before,.sidebar::after,.cosmic-nebula,.cosmic-ray{animation:none!important}
     }
 
 .emergency-protocol-warning{border:2px solid #fc3d21;background:#fff1ee;color:#252b33;padding:18px;margin:8px 0 20px}
@@ -500,3 +512,38 @@
 .radar-date-controls{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
 .radar-date-controls label{display:grid;gap:6px;min-width:150px}
 .radar-date-controls select{padding:9px}
+
+/* Pantalla de arranque: conserva la paleta actual y solo anima el cohete. */
+.launch-screen{position:fixed;inset:0;z-index:100;background:var(--azul-marino);display:grid;place-items:center;overflow:hidden;animation:launch-screen-in .25s ease-out both}
+.launch-screen.is-leaving{animation:launch-screen-out .5s ease-in forwards}
+.launch-content{position:relative;width:230px;height:300px;display:grid;place-items:center}
+.launch-stars{position:absolute;inset:-80px -140px;background-image:radial-gradient(circle,var(--blanco) 0 1px,transparent 1.5px),radial-gradient(circle,var(--azul-claro) 0 1px,transparent 1.5px);background-size:82px 96px,137px 121px;background-position:12px 24px,55px 63px;opacity:.45;animation:stars-drift 2.2s linear infinite}
+.launch-stars::before,.launch-stars::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,var(--blanco) 0 1px,transparent 1.5px);background-size:173px 149px;opacity:.3}
+.launch-stars::before{animation:stars-twinkle 1.6s ease-in-out infinite alternate}
+.launch-stars::after{transform:translateY(-42px);opacity:.2;animation:stars-twinkle 2.1s .4s ease-in-out infinite alternate-reverse}
+.css-rocket{position:relative;z-index:2;width:68px;height:116px;filter:drop-shadow(0 12px 10px rgba(0,0,0,.35));animation:rocket-liftoff 1.35s var(--curva-salida) both}
+.rocket-nose{position:absolute;top:0;left:14px;width:40px;height:38px;background:var(--blanco);border-radius:50% 50% 12px 12px;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.rocket-body{position:absolute;top:28px;left:8px;width:52px;height:67px;background:linear-gradient(90deg,#d8e0ea 0 16%,var(--blanco) 16% 82%,#c1ccd9 82%);border-radius:26px 26px 13px 13px;box-shadow:inset 0 -8px 0 rgba(11,61,145,.12)}
+.rocket-window{position:absolute;top:17px;left:16px;width:20px;height:20px;border:4px solid var(--azul-nasa);border-radius:50%;background:var(--azul-claro);box-shadow:inset 0 0 0 3px rgba(255,255,255,.45)}
+.rocket-fin{position:absolute;top:66px;width:22px;height:35px;background:var(--rojo);z-index:-1}
+.rocket-fin-left{left:0;border-radius:5px 0 2px 15px;transform:skewY(18deg)}
+.rocket-fin-right{right:0;border-radius:0 5px 15px 2px;transform:skewY(-18deg)}
+.rocket-flame{position:absolute;left:19px;top:88px;width:30px;height:48px;display:flex;justify-content:center;gap:2px;filter:drop-shadow(0 0 7px var(--rojo))}
+.rocket-flame::before{content:"";position:absolute;top:0;width:22px;height:42px;background:var(--rojo);clip-path:polygon(50% 100%,0 0,100% 0)}
+.rocket-flame i{position:relative;z-index:1;display:block;width:7px;height:25px;margin-top:4px;background:var(--blanco);clip-path:polygon(50% 100%,0 0,100% 0);animation:flame-flicker .18s ease-in-out infinite alternate}
+.rocket-flame i:nth-child(2){height:34px;background:#ffd166;animation-delay:-.1s}.rocket-flame i:nth-child(3){height:22px;background:var(--blanco);animation-delay:-.04s}
+.launch-trail{position:absolute;bottom:18px;width:92px;height:5px;border-radius:50%;background:var(--rojo);opacity:.45;filter:blur(7px);animation:trail-pulse .45s ease-in-out infinite alternate}
+.launch-copy{position:absolute;z-index:3;bottom:5px;display:grid;justify-items:center;gap:7px;color:var(--blanco);text-align:center;letter-spacing:.1em}
+.launch-copy strong{font:700 14px var(--fuente-titulo);color:var(--blanco)}
+.launch-copy span{font:500 10px var(--fuente-dato);color:var(--texto-sobre-oscuro)}
+.launch-progress{display:block;width:132px;height:3px;overflow:hidden;background:var(--linea-sobre-oscuro);border-radius:4px}
+.launch-progress b{display:block;width:42%;height:100%;background:var(--rojo);box-shadow:0 0 8px var(--rojo);animation:service-progress 1.15s ease-in-out infinite alternate}
+@keyframes rocket-liftoff{0%{opacity:0;transform:translateY(58px) rotate(-3deg) scale(.7)}35%{opacity:1}100%{transform:translateY(-62px) rotate(3deg) scale(1.04)}}
+@keyframes flame-flicker{from{transform:scaleY(.72) translateX(-1px)}to{transform:scaleY(1.15) translateX(1px)}}
+@keyframes trail-pulse{from{transform:scaleX(.65);opacity:.25}to{transform:scaleX(1.15);opacity:.6}}
+@keyframes stars-drift{from{transform:translateY(0)}to{transform:translateY(96px)}}
+@keyframes stars-twinkle{from{opacity:.12}to{opacity:.65}}
+@keyframes service-progress{from{transform:translateX(-72%)}to{transform:translateX(190%)}}
+@keyframes launch-screen-in{from{opacity:0}to{opacity:1}}
+@keyframes launch-screen-out{from{opacity:1}to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.css-rocket,.rocket-flame i,.launch-trail,.launch-stars,.launch-stars::before,.launch-stars::after,.launch-progress b{animation:none}.launch-screen,.launch-screen.is-leaving{animation:none}.launch-screen.is-leaving{opacity:0;visibility:hidden}}

@@ -74,6 +74,7 @@ const scenarios: Scenario[] = [
 
 function App() {
   const { view, t } = useLanguage()
+  const [launchPhase, setLaunchPhase] = useState<'visible' | 'leaving' | 'hidden'>('visible')
   const [profileId, setProfileId] = useState('luna')
   const [tab, setTab] = useState<'resumen' | 'checkin' | 'cognicion' | 'signos' | 'riesgos' | 'emergencia' | 'marte' | 'salida'>('resumen')
   const [scenarioId, setScenarioId] = useState('mars')
@@ -112,6 +113,14 @@ function App() {
     return () => window.clearInterval(timer)
   }, [])
   useEffect(() => {
+    const leaveTimer = window.setTimeout(() => setLaunchPhase('leaving'), 1250)
+    const hideTimer = window.setTimeout(() => setLaunchPhase('hidden'), 1750)
+    return () => {
+      window.clearTimeout(leaveTimer)
+      window.clearTimeout(hideTimer)
+    }
+  }, [])
+  useEffect(() => {
     if (reactionTimerRef.current) window.clearTimeout(reactionTimerRef.current)
     setReactionRunning(false); setReactionReady(false); setReactionFalseStart(false); setReactionResult(null)
   }, [profileId])
@@ -144,7 +153,26 @@ function App() {
 
 
   return view(<div className="app-shell">
+    {launchPhase !== 'hidden' && <div className={`launch-screen ${launchPhase === 'leaving' ? 'is-leaving' : ''}`} role="status" aria-label="Iniciando Cosmic Ray 64">
+      <div className="launch-content" aria-hidden="true">
+        <div className="launch-stars" />
+        <div className="css-rocket">
+          <span className="rocket-nose" />
+          <span className="rocket-body"><span className="rocket-window" /></span>
+          <span className="rocket-fin rocket-fin-left" />
+          <span className="rocket-fin rocket-fin-right" />
+          <span className="rocket-flame"><i /><i /><i /></span>
+        </div>
+        <div className="launch-trail" />
+        <div className="launch-copy">
+          <strong>COSMIC RAY 64</strong>
+          <span>INICIANDO SERVICIO...</span>
+          <i className="launch-progress"><b /></i>
+        </div>
+      </div>
+    </div>}
     <aside className="sidebar" inert={showTurn}>
+      <div className="header-cosmos" aria-hidden="true"><span className="cosmic-nebula" /><i className="cosmic-ray cosmic-ray-one" /><i className="cosmic-ray cosmic-ray-two" /><i className="cosmic-ray cosmic-ray-three" /></div>
       <div className="brand"><span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" focusable="false"><ellipse className="planet-ring" cx="20" cy="20" rx="18" ry="6.5" transform="rotate(-28 20 20)"/><circle cx="20" cy="20" r="9"/></svg></span><div><strong>COSMIC RAY</strong><small>HEALTH CONSOLE · 64</small></div></div>
       <div className="demo-pill"><span /> {tab === 'resumen' && isExample ? t('HISTORIAL DEL PERFIL') : t('LOCAL · REGISTROS PROPIOS')}</div>
       <nav aria-label={t('Navegación principal')}>{[['resumen', 'Resumen'], ['checkin', 'Chequeo diario'], ['cognicion', 'Cognición'], ['signos', 'Signos vitales'], ['riesgos', 'Riesgos de misión'], ['marte', 'Modo Marte'], ['salida', 'Preparar salida'], ['emergencia', 'Emergencia']].map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined} onClick={() => setTab(id as typeof tab)}>{t(label)}</button>)}</nav>
