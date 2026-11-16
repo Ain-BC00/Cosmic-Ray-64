@@ -1,45 +1,45 @@
 # Cosmic Ray 64
 
-[Read this guide in English](./README_EN.md)
+[Read this guide in Spanish](./README_ES.md)
 
-Cosmic Ray 64 es una aplicación web local para registrar y revisar información de bienestar de una tripulación espacial, organizar actividades de misión y apoyar la coordinación ante emergencias. El proyecto apunta a misiones de larga duración y autonomía durante demoras de comunicación con la Tierra.
+Cosmic Ray 64 is a local web application for recording and reviewing crew wellbeing information, organizing mission activities, and supporting emergency coordination. The project is intended for long-duration space missions and crew autonomy during communication delays with Earth.
 
-Es un prototipo de apoyo y registro. No diagnostica, no determina aptitud para el servicio, no autoriza actividades extravehiculares y no sustituye el juicio de la tripulación ni del personal médico. Las referencias de NASA y NOAA aportan contexto científico y ambiental; no constituyen certificación, respaldo ni protocolos clínicos para esta aplicación.
+This is a support and record-keeping prototype. It does not diagnose conditions, determine fitness for duty, authorize extravehicular activities, or replace crew or medical judgment. NASA and NOAA references provide scientific and environmental context; they do not certify, endorse, or provide clinical protocols for this application.
 
-## Qué incluye actualmente
+## What the application currently includes
 
-- **Resumen e historial por tripulante:** perfiles seleccionables, registros diarios, indicadores explicables y estados pendientes. Los historiales incorporados conservan sus valores y la interfaz los identifica por perfil. No hay un sensor conectado que permita atribuirlos automáticamente a telemetría.
-- **Chequeo diario:** entrada de sueño, ánimo, estrés, cansancio y síntomas, con persistencia por perfil y fecha local.
-- **Cognición:** prueba de reacción medida desde la señal visual hasta el clic; una respuesta anticipada no se guarda como resultado.
-- **Signos vitales:** captura manual opcional de mediciones tomadas externamente, con validación de formato y unidades.
-- **Tendencias radar:** comparación de registros diarios para sueño, ánimo, estrés y cansancio. Cada eje se normaliza según el rango de captura; la tabla conserva los valores y unidades originales. No se calcula una puntuación clínica a partir del radar.
-- **Riesgos de misión:** contexto para órbita terrestre, misión lunar, tránsito a Marte y actividad extravehicular, organizado alrededor de los cinco peligros de los vuelos espaciales humanos.
-- **Asistencia de emergencia local:** categoría, descripción, temporizador, roles, lista de coordinación, notas y preparación de un informe. La interfaz indica cuando no hay un procedimiento médico aprobado disponible; el informe permanece en una cola local y no se transmite.
-- **Modo Marte:** ejercicio de demora de comunicación, bitácora y coordinación. La demora y la respuesta son parte de una demostración local, no una conexión con Tierra.
-- **Preparación de salida:** consulta de escalas observadas de clima espacial de NOAA y planes editables. Las escalas describen el entorno observado; no estiman dosis personal ni autorizan una EVA.
-- **Relevo de turno:** resumen local descargable de registros y pendientes.
-- **Español e inglés:** cambio de idioma desde la interfaz.
+- **Crew overview and history:** selectable crew profiles, daily records, explainable indicators, and pending states. Included profile histories retain their values and are identified by profile. No connected sensor automatically attributes them to spacecraft telemetry.
+- **Daily check-in:** sleep, mood, stress, fatigue, and symptom entry, stored by profile and local date.
+- **Cognition:** a reaction test measured from the visual cue to the user's click; an early response is not stored as a result.
+- **Vital signs:** optional manual entry of measurements taken with external equipment, with format and unit validation.
+- **Radar trends:** comparison of daily records for sleep, mood, stress, and fatigue. Each axis is normalized to its entry range; a table preserves original values and units. The radar does not calculate a clinical score.
+- **Mission risks:** context for Earth orbit, lunar missions, Mars transit, and extravehicular activity, organized around NASA's five human spaceflight hazards.
+- **Local emergency assistance:** category, description, timer, roles, coordination checklist, notes, and report preparation. The interface states when no approved medical procedure is available; reports stay in a local queue and are not transmitted.
+- **Mars mode:** a communication-delay exercise, logbook, and coordination flow. The delay and response are a local demonstration, not a connection to Earth.
+- **EVA preparation:** NOAA observed space-weather scales and editable plans. The scales describe observed conditions; they do not estimate personal dose or authorize an EVA.
+- **Shift handover:** a downloadable local summary of records and outstanding items.
+- **English and Spanish:** language switching from the interface.
 
-## Flujo de uso
+## User workflow
 
-1. Selecciona un perfil de tripulante y revisa el resumen y los registros disponibles.
-2. Guarda el chequeo diario y, si corresponde, completa la prueba de reacción o captura manual de signos vitales.
-3. Revisa el radar, elige el periodo y compara fechas. Los valores ausentes se dejan sin medición.
-4. Consulta los riesgos del escenario de misión y la preparación de salida cuando sea pertinente.
-5. Ante una emergencia, elige la categoría, registra observaciones y responsables, consulta el procedimiento controlado de la misión y documenta el progreso. La aplicación no genera tratamiento clínico.
-6. Prepara un informe local para Tierra. Se mantiene como pendiente hasta que exista una integración real de comunicaciones; ponerlo en cola no equivale a transmitirlo ni a recibir confirmación.
-7. Prepara el relevo de turno y descarga el informe si se necesita compartirlo fuera del navegador.
+1. Select a crew profile and review its overview and available records.
+2. Save the daily check-in and, if needed, complete the reaction test or enter vital signs manually.
+3. Review the radar, choose a period, and compare dates. Missing values remain unmeasured.
+4. Review risks for the mission scenario and EVA preparation when applicable.
+5. During an emergency, select a category, record observations and assigned roles, consult the mission's controlled procedure, and document progress. The application does not generate clinical treatment instructions.
+6. Prepare a local report for Earth. It remains pending until a real communication integration exists; queuing a report does not mean it was transmitted or acknowledged.
+7. Prepare a shift handover and download the report if it needs to be shared outside the browser.
 
-## Instalación y ejecución
+## Install and run
 
-Requisitos: Node.js 20 o posterior y npm.
+Requirements: Node.js 20 or newer and npm.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre la dirección local indicada por Vite. Para validar el proyecto y previsualizar el build:
+Open the local address printed by Vite. To validate the project and preview a production build:
 
 ```bash
 npm test
@@ -47,45 +47,46 @@ npm run build
 npm run preview
 ```
 
-## Flujo de trabajo de desarrollo
+## Development workflow
 
-1. Revisa `git status` y conserva los cambios locales existentes.
-2. Inspecciona el componente, el modelo de datos y las pruebas relacionadas antes de cambiar una función.
-3. Implementa el cambio dentro de React, TypeScript y Vite; conserva registros históricos y evita rellenar mediciones ausentes.
-4. Para datos de salud, registra perfil, fecha/hora, unidad y procedencia cuando estén disponibles. No presentes una entrada manual como telemetría de sensor.
-5. Para procedimientos de emergencia, exige texto controlado, versión, fuente y aprobación de la autoridad médica de la misión. Las páginas de riesgos e investigación no son protocolos de tratamiento.
-6. Ejecuta `npm test` y `npm run build`, revisa el diff y documenta cualquier integración pendiente.
-7. El workflow de GitHub Actions despliega al hacer push a `main`; confirma que la ejecución de Azure Static Web Apps termine correctamente antes de considerar el cambio publicado.
+1. Check `git status` and preserve existing local changes.
+2. Inspect the relevant component, data model, and tests before changing a feature.
+3. Implement within the existing React, TypeScript, and Vite stack; preserve history and never fill missing measurements with invented values.
+4. For health data, record profile, timestamp, unit, and provenance when available. Do not present manual entry as sensor telemetry.
+5. Emergency procedures require controlled text, version, source, effective date, and approval from the mission medical authority. Risk and research pages are not treatment protocols.
+6. Run `npm test` and `npm run build`, inspect the diff, and document any missing integrations.
+7. The GitHub Actions workflow deploys on pushes to `main`; confirm that the Azure Static Web Apps run succeeds before considering a change published.
 
-## Arquitectura y límites actuales
+## Architecture and current limitations
 
-- Frontend: React, TypeScript, Vite y Recharts.
-- Persistencia: `localStorage` del navegador, separada por origen y dispositivo. No hay backend, cuenta de usuario, sincronización entre dispositivos ni cifrado administrado por la aplicación.
-- Adquisición: los chequeos son entradas de usuario; los signos vitales son manuales. No hay integración de dispositivos biomédicos ni telemetría de la nave.
-- Comunicaciones: no hay transporte con Tierra. El informe de emergencia en cola permanece local y no tiene estados de transmisión, entrega o acuse provenientes de una red.
-- Operación sin conexión: el procedimiento controlado debe integrarse antes de poder ofrecer guía autónoma validada. La aplicación web actual no instala una copia offline completa.
-- Procedimientos médicos e inventario: no hay biblioteca de procedimientos aprobados ni inventario de nave integrado. El prototipo avisa cuando no hay guía disponible y no debe usarse para decidir tratamientos.
-- Autenticación y autorización: los perfiles de interfaz no son identidades autenticadas ni controles de acceso.
+- Frontend: React, TypeScript, Vite, and Recharts.
+- Persistence: browser `localStorage`, separated by origin and device. There is no backend, user account, cross-device sync, or application-managed encryption.
+- Acquisition: check-ins are user-entered; vital signs are manual. No biomedical device or spacecraft telemetry integration is connected.
+- Communications: there is no transport to Earth. The queued emergency report stays local and does not receive network-based transmitted, delivered, or acknowledged states.
+- Offline operation: controlled procedures must be integrated before validated autonomous guidance is available. The current web app does not install a complete offline copy.
+- Medical procedures and inventory: no approved procedure library or spacecraft inventory is integrated. The prototype warns when guidance is unavailable and must not be used to choose treatment.
+- Authentication and authorization: interface profiles are not authenticated identities or access controls.
 
-## Próximos pasos del proyecto
+## Project roadmap
 
-1. **Procedimientos y seguridad médica:** incorporar protocolos de misión aprobados con identificador, versión, fuente, fecha de vigencia, aprobadores y uso offline.
-2. **Inventario de misión:** integrar cantidades, ubicación, expiración, estado y restricciones; relacionar recursos con procedimientos aprobados.
-3. **Comunicaciones tolerantes a demoras:** añadir un servicio autenticado de cola y sincronización con estados distintos para creado, pendiente, transmitido, entregado, confirmado y respondido.
-4. **Datos y seguridad:** definir identidad y autorización, persistencia segura, auditoría, respaldo y sincronización sin duplicados.
-5. **Sensores y trazabilidad:** conectar dispositivos solo mediante interfaces documentadas; conservar fuente, unidad, sello temporal, calidad y estado de conexión.
-6. **NASA HRP:** ampliar el mapa de los cinco peligros y mantener un catálogo de investigaciones separado de recomendaciones clínicas.
-7. **Visualización e investigación:** validar dimensiones, rangos y resúmenes semanales/mensuales con especialistas antes de usarlos operacionalmente.
-8. **Validación:** añadir pruebas de interfaz y casos de error para operación sin conexión, registros incompletos, inventario vencido y sincronización interrumpida.
+1. **Medical procedure safety:** integrate mission-approved procedures with IDs, versions, sources, effective dates, approvals, and offline access.
+2. **Mission inventory:** integrate quantities, locations, expirations, operational status, and restrictions; link resources to approved procedures.
+3. **Delay-tolerant communications:** add an authenticated queue and synchronization service with separate created, pending, transmitted, delivered, acknowledged, and responded states.
+4. **Data and security:** define identity and authorization, secure persistence, audit, backup, and duplicate-safe synchronization.
+5. **Sensors and provenance:** connect devices only through documented interfaces; preserve source, unit, timestamp, quality, and connection state.
+6. **NASA HRP:** expand the five-hazard map and maintain a research catalog separate from clinical recommendations.
+7. **Visualization and research:** validate dimensions, ranges, and weekly/monthly summaries with specialists before operational use.
+8. **Validation:** add interface tests and failure cases for offline operation, incomplete records, expired inventory, and interrupted synchronization.
 
-## Referencias
+## References
 
-- [NASA Human Research Program: riesgos de vuelos espaciales](https://www.nasa.gov/hrp/risks/)
-- [NASA: los cinco peligros de los vuelos espaciales humanos](https://www.nasa.gov/hrp/hazards/)
-- [NASA HRP: investigaciones en curso](https://www.nasa.gov/hrp/ongoing-hrp-research/)
-- [NASA Open Science Data Repository](https://science.nasa.gov/biological-physical/data/osdr/) — repositorio de datos; un enlace no significa que esta app haya incorporado o validado un dataset.
-- [Reto 2026: software de monitoreo de salud para astronautas](https://youtu.be/RERG3gEmdC8) — no se obtuvo una transcripción verificable; no se atribuyen requisitos específicos al video.
-- [NOAA SWPC: escalas observadas](https://services.swpc.noaa.gov/products/noaa-scales.json)
-- [NASA: investigación sobre demoras de comunicación](https://ntrs.nasa.gov/citations/20250000703)
+- [NASA Human Research Program: human spaceflight risks](https://www.nasa.gov/hrp/risks/)
+- [NASA: the five hazards of human spaceflight](https://www.nasa.gov/hrp/hazards/)
+- [NASA HRP: ongoing research](https://www.nasa.gov/hrp/ongoing-hrp-research/)
+- [NASA Open Science Data Repository](https://science.nasa.gov/biological-physical/data/osdr/) — a data repository; linking to it does not mean this app has incorporated or validated a dataset.
+- [2026 challenge: health monitoring software for astronauts](https://youtu.be/RERG3gEmdC8) — no verifiable transcript was available, so no specific requirements are attributed to the video.
+- [NOAA SWPC: observed scales](https://services.swpc.noaa.gov/products/noaa-scales.json)
+- [NASA: communication-delay research](https://ntrs.nasa.gov/citations/20250000703)
 
-Los datos, protocolos, enlaces y requisitos de misión deben revisarse por sus responsables científicos, médicos y operacionales antes de cualquier uso en vuelo.
+Mission data, procedures, references, and requirements must be reviewed by the responsible scientific, medical, and operational authorities before any flight use.
+
