@@ -6,7 +6,7 @@ This file documents the public demo, the scientific references, the data sources
 
 - **Live project:** https://cosmic-ray-64.earth/
 - **Source repository:** https://github.com/Ain-BC00/Cosmic-Ray-64
-- **Demo video:** To be added — replace this line with the public YouTube URL when the video is available.
+- **Demo video:** https://github.com/Ain-BC00/Cosmic-Ray-64/blob/main/demo/cosmic-ray-64-demo.mov
 
 The demo video must be public and accessible without a password, account, or registration.
 
