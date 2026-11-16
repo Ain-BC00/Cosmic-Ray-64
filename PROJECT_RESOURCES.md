@@ -6,7 +6,7 @@ This file documents the public demo, the scientific references, the data sources
 
 - **Live project:** https://cosmic-ray-64.earth/
 - **Source repository:** https://github.com/Ain-BC00/Cosmic-Ray-64
-- **Demo video:** https://github.com/Ain-BC00/Cosmic-Ray-64/blob/main/demo/cosmic-ray-64-demo.mp4
+- **Demo video:** https://drive.google.com/file/d/1W2le4TXX5NfpuXrs1NK32sW8PiR23RdX/view?usp=sharing
 
 The demo video must be public and accessible without a password, account, or registration.
 
