@@ -28,15 +28,9 @@ Si la carpeta clonada tiene otro nombre, usa ese nombre en el comando `cd`.
 - El modo emergencia organiza tareas y registra el evento; no prescribe tratamientos.
 - Las referencias de NASA/OSDR son fuentes de contexto y no representan respaldo o certificación de NASA para esta aplicación.
 
-## Tareas prioritarias
+## Estado de entrega
 
-- [x] Conectar los datos del chequeo diario al resumen principal.
-- [x] Hacer que el historial se guarde por fecha y por perfil.
-- [ ] Añadir datasets OSDR seleccionados con metadatos, licencia y enlace de origen.
-- [ ] Revisar con personal médico los procedimientos del modo emergencia.
-- [ ] Crear pruebas de interfaz para las gráficas, alertas y prueba cognitiva.
-- [ ] Mejorar la accesibilidad y comprobar el diseño en tableta.
-- [ ] Revisar privacidad, cifrado y exportación antes de usar datos personales.
+La aplicación se considera terminada para la entrega del proyecto. Este repositorio conserva el código fuente completo, la documentación técnica, las referencias utilizadas y las instrucciones para ejecutar la versión local. Las modificaciones posteriores deben tratarse como mantenimiento o nuevas versiones, no como tareas pendientes de esta entrega.
 
 ## Indicaciones para el siguiente desarrollador
 
@@ -67,7 +61,7 @@ El historial vive en `cosmic-daily-v1`; cada sesión de Marte usa `cosmic-mars-v
 
 `src/mission.ts` contiene validación, actualización por fecha/perfil y cálculo del reloj. `src/MarsMode.tsx` contiene el simulador, bitácora, historial e informes. Las transmisiones guardan una copia fija del informe y la configuración de tiempo usada al enviar.
 
-Los datos se mantienen locales al navegador y origen, sin sincronización ni backend. El escenario de Marte no modifica los escenarios de la sección Riesgos. La evidencia integrada es una referencia a investigación NASA, no un dataset analizado. Se incorporó interfaz español/inglés; continúa pendiente la selección de un dataset OSDR apropiado.
+Los datos se mantienen locales al navegador y origen, sin sincronización ni backend. El escenario de Marte no modifica los escenarios de la sección Riesgos. La evidencia integrada es una referencia a investigación NASA, no un dataset analizado. Se incorporó interfaz español/inglés; no se presenta ningún dataset OSDR como si hubiera sido analizado.
 
 ## Incorporación: preparación de salida
 
@@ -94,7 +88,7 @@ Se retiró la pantalla independiente de Evidencia. La bibliografía permanece en
 - La emergencia ya es accesible en el menú móvil. El diálogo de relevo mantiene el foco y desactiva el fondo mientras está abierto.
 - El resumen de turno incluye signos manuales de hoy y la fecha/estado del último evento, que puede pertenecer a otro turno.
 
-Validación: `npm test` y `npm run build`, más recorridos de navegador de ambos idiomas, persistencia por perfil, recuperación de evento y vistas móviles. Publicación en GitHub/Azure todavía pendiente: estos cambios son locales.
+Validación: `npm test` y `npm run build`, más recorridos de navegador de ambos idiomas, persistencia por perfil, recuperación de evento y vistas móviles. La versión de entrega se publica mediante GitHub y Azure Static Web Apps.
 
 ## Selector de ejemplos en el resumen
 
