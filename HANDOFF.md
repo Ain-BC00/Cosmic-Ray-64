@@ -1,97 +1,96 @@
-# Documento de transferencia
+# Handoff Document
 
-Este documento sirve para que otra persona pueda continuar el proyecto sin perder el contexto.
+This document helps someone continue the project without losing context.
 
-## Estado actual
+## Current status
 
-La aplicación compila con `npm run build` y se ejecuta localmente con Vite. El prototipo ya contiene resumen, chequeo diario, cognición, signos vitales, riesgos de misión, modo emergencia, gráficas explorables y referencias contextuales.
+The application builds with `npm run build` and runs locally with Vite. The prototype includes an overview, daily check-in, cognition test, vital signs, mission risks, emergency mode, interactive charts, and contextual references.
 
-## Instalación para continuar
+## Getting started
 
 ```bash
-git clone [PEGAR_AQUÍ_LA_URL_DEL_REPOSITORIO]
+git clone [PASTE_REPOSITORY_URL_HERE]
 cd "Cosmic Ray 64"
 npm install
 npm run dev
 ```
 
-Si la carpeta clonada tiene otro nombre, usa ese nombre en el comando `cd`.
+If the cloned folder has a different name, use that name in the `cd` command.
 
-## Qué debe saber la persona que continúe
+## What the next developer should know
 
-- No hay sensores físicos conectados.
-- Los signos vitales de demostración son simulados y están identificados en la interfaz.
-- No existe un modelo clínico entrenado.
-- Las alertas actuales son reglas transparentes y orientativas.
-- La prueba cognitiva calcula el tiempo entre la señal visual y el clic del usuario.
-- Los datos de la aplicación se guardan en `localStorage`.
-- El modo emergencia organiza tareas y registra el evento; no prescribe tratamientos.
-- Las referencias de NASA/OSDR son fuentes de contexto y no representan respaldo o certificación de NASA para esta aplicación.
+- No physical sensors are connected.
+- Demonstration vital signs are simulated and identified in the interface.
+- There is no trained clinical model.
+- Current alerts are transparent, informational rules.
+- The cognition test measures the time between the visual cue and the user's click.
+- Application data is stored in `localStorage`.
+- Emergency mode organizes tasks and records the event; it does not prescribe treatment.
+- NASA/OSDR references provide context and do not represent NASA endorsement or certification of this application.
 
-## Estado de entrega
+## Delivery status
 
-La aplicación se considera terminada para la entrega del proyecto. Este repositorio conserva el código fuente completo, la documentación técnica, las referencias utilizadas y las instrucciones para ejecutar la versión local. Las modificaciones posteriores deben tratarse como mantenimiento o nuevas versiones, no como tareas pendientes de esta entrega.
+The application is considered complete for project submission. This repository contains the full source code, technical documentation, references, and instructions for running the local version. Future changes should be treated as maintenance or new versions, not as unfinished tasks for this submission.
 
-## Indicaciones para el siguiente desarrollador
+## Guidance for the next developer
 
-### Objetivo que quiero priorizar
+### Priority objective
 
-<!-- Completar aquí con la siguiente función que se desea desarrollar. -->
+<!-- Fill in the next feature to develop. -->
 
-### Decisiones de producto
+### Product decisions
 
-<!-- Completar aquí: qué debe conservarse, qué debe cambiarse y qué no debe implementarse. -->
+<!-- Fill in what should be preserved, changed, or not implemented. -->
 
-### Fuentes o datasets aprobados
+### Approved sources or datasets
 
-<!-- Completar aquí con enlaces, identificadores OSDR y condiciones de uso. -->
+<!-- Add links, OSDR identifiers, and terms of use. -->
 
-### Personas que deben revisar cambios sensibles
+### People who should review sensitive changes
 
-<!-- Completar aquí con los responsables de producto, investigación o revisión médica. -->
+<!-- Add the product, research, or medical reviewers. -->
 
-### Notas de la última sesión
+### Notes from the last session
 
-<!-- Completar aquí cualquier decisión o problema descubierto. -->
+<!-- Add any decisions or issues discovered. -->
 
+## Mars mode integration
 
-## Incorporación: Modo Marte
+Daily history is stored in `cosmic-daily-v1`; each Mars session uses `cosmic-mars-v1-{profileId}`. Older records without a profile (`cosmic-checkin` and `cosmic-reaction-history`) are retained but are not automatically attributed to anyone.
 
-El historial vive en `cosmic-daily-v1`; cada sesión de Marte usa `cosmic-mars-v1-{profileId}`. Los registros antiguos sin perfil (`cosmic-checkin` y `cosmic-reaction-history`) se conservan pero no se atribuyen a una persona automáticamente.
+`src/mission.ts` contains validation, updates by date/profile, and clock calculations. `src/MarsMode.tsx` contains the simulator, logbook, history, and reports. Transmissions save a fixed copy of the report and the time configuration used when sending.
 
-`src/mission.ts` contiene validación, actualización por fecha/perfil y cálculo del reloj. `src/MarsMode.tsx` contiene el simulador, bitácora, historial e informes. Las transmisiones guardan una copia fija del informe y la configuración de tiempo usada al enviar.
+Data stays local to the browser and origin, with no synchronization or backend. The Mars scenario does not modify the scenarios in the Risks section. The integrated evidence is a reference to NASA research, not an analyzed dataset. The interface supports English and Spanish; this version does not present an OSDR dataset as analyzed.
 
-Los datos se mantienen locales al navegador y origen, sin sincronización ni backend. El escenario de Marte no modifica los escenarios de la sección Riesgos. La evidencia integrada es una referencia a investigación NASA, no un dataset analizado. Se incorporó interfaz español/inglés; no se presenta ningún dataset OSDR como si hubiera sido analizado.
+## EVA preparation integration
 
-## Incorporación: preparación de salida
+`src/spaceWeather.ts` validates the NOAA response, distinguishes missing data from a zero scale, calculates freshness, and generates review explanations. `src/ExitReadiness.tsx` integrates a request with cancellation/timeout, a labeled local copy, historical alert playback, A/B plans, and a downloadable report.
 
-`src/spaceWeather.ts` valida la respuesta NOAA, distingue datos ausentes de escala cero, calcula la vigencia y genera explicaciones de revisión. `src/ExitReadiness.tsx` integra consulta con cancelación/timeout, copia local marcada, reproducción de avisos históricos, planes A/B e informe descargable.
+Current source: `https://services.swpc.noaa.gov/products/noaa-scales.json`, entry `0` (current observation). The `cosmic-weather-v1` cache retains observation and query dates, but a successful query on opening is required to mark it as current. Historical cards retain their individual NOAA links. There is no interpolation, dosimetry, or clinical risk estimate. The nine tests cover history, the clock, plan validation, and handling of missing or stale environmental data.
 
-Fuente actual: `https://services.swpc.noaa.gov/products/noaa-scales.json`, entrada `0` (observación actual). El caché `cosmic-weather-v1` conserva fecha de observación y consulta, pero requiere una consulta exitosa al abrir para marcarse como reciente. Las fichas históricas conservan sus enlaces NOAA individuales. No hay interpolación, dosimetría ni estimación de riesgo clínico. Las nueve pruebas cubren historial, reloj, validación de planes y tratamiento de datos ambientales ausentes/antiguos.
+## Navigation and references
 
-## Navegación y referencias
+The standalone Evidence screen was removed. The bibliography remains in the README, and applicable references appear in “Source and limitations” dropdowns in Mission Risks, Mars Mode, and EVA Preparation. The general label indicates that records are local without promising full offline availability.
 
-Se retiró la pantalla independiente de Evidencia. La bibliografía permanece en README y las referencias aplicables aparecen en desplegables «Fuente y límites» dentro de Riesgos de misión, Modo Marte y Preparar salida. La etiqueta general indica registros locales sin prometer disponibilidad offline completa.
+## Orientation and shift handover
 
-## Orientación y cierre de turno
+`src/TurnBrief.tsx` contains the handover report and defensive reading of plans/logbook. `nextStep` in `src/mission.ts` orders pending items. Shift closeout retains a fixed local copy of the report per crew member; personal records are not replaced with fictional data. The custom palette uses teal and copper; CSS tokens no longer refer to NASA. Text citations remain, with no brand graphics or new demonstration mode.
 
-`src/TurnBrief.tsx` contiene el informe de relevo y lectura defensiva de planes/bitácora. `nextStep` en `src/mission.ts` ordena los pendientes. El cierre conserva una copia fija del informe local por tripulante; los registros personales no se reemplazan por datos ficticios. La nueva paleta propia usa verde petróleo y cobre; los tokens CSS ya no hacen referencia a NASA. Se mantienen las citas textuales, sin elementos gráficos de marca ni modo demostración nuevo.
+## Status after the full polish pass
 
-## Estado después del pulido integral
+- `src/records.ts`: validation and reading of vital-sign and emergency records, elapsed time, and date filters.
+- `src/Vitals.tsx`: manual entry by person/date (`cosmic-vitals-v2-{profileId}-{date}`).
+- `src/EmergencyMode.tsx`: draft/event by profile (`cosmic-emergency-v2-{profileId}`) and archive before starting another event (`cosmic-emergency-archive-v2-{profileId}`). Legacy keys are not overwritten.
+- `src/TrendExplorer.tsx`: lazy loading of Recharts; personal/sample selector and calendar periods without mixing in fictional data.
+- `src/i18n.tsx` and `src/translations.ts`: English/Spanish interface text. Translation operates on React text before rendering, without modifying the DOM or form values. Reports explicitly mark user-entered fields so they remain unchanged. Extend the catalog when adding text.
+- Each metric's reference uses the three records before the current day; the index requires a reference and complete current data. It is not presented as clinical validation.
+- Emergency mode is accessible from the mobile menu. The handover dialog keeps focus and disables the background while open.
+- The shift overview includes today's manually entered vital signs and the date/status of the latest event, which may belong to another shift.
 
-- `src/records.ts`: validación/lectura de signos y emergencias, tiempo transcurrido y filtros por fechas.
-- `src/Vitals.tsx`: registro manual por persona/fecha (`cosmic-vitals-v2-{profileId}-{date}`).
-- `src/EmergencyMode.tsx`: borrador/evento por perfil (`cosmic-emergency-v2-{profileId}`) y archivo previo al iniciar otro evento (`cosmic-emergency-archive-v2-{profileId}`). No sobrescribe claves legacy.
-- `src/TrendExplorer.tsx`: carga diferida de Recharts; selector personal/ejemplo y periodos calendario sin datos ficticios mezclados.
-- `src/i18n.tsx` y `src/translations.ts`: textos locales ES/EN. La traducción opera sobre texto de React antes de renderizar, sin modificar el DOM ni valores de formularios. Los informes marcan explícitamente los campos de usuario para conservarlos literalmente. Ampliar el catálogo al introducir textos nuevos.
-- La referencia de cada métrica usa tres registros anteriores al día actual; el índice requiere referencia y datos actuales completos. No se presenta como validación clínica.
-- La emergencia ya es accesible en el menú móvil. El diálogo de relevo mantiene el foco y desactiva el fondo mientras está abierto.
-- El resumen de turno incluye signos manuales de hoy y la fecha/estado del último evento, que puede pertenecer a otro turno.
+Validation: `npm test` and `npm run build`, plus browser walkthroughs in both languages, profile persistence, event recovery, and mobile views. The submission version is published through GitHub and Azure Static Web Apps.
 
-Validación: `npm test` y `npm run build`, más recorridos de navegador de ambos idiomas, persistencia por perfil, recuperación de evento y vistas móviles. La versión de entrega se publica mediante GitHub y Azure Static Web Apps.
+## Sample selector in the overview
 
-## Selector de ejemplos en el resumen
+The existing selector now changes the cards, index, signals, and chart together. It opens on personal records by default; selecting samples does not write records, and switching back restores personal values. Samples use the profile's first three days as the reference and the last day as the current reading. `assessWellbeing` centralizes the same illustrative rules for both sources; reports and other screens receive only the personal assessment. No general demonstration mode was added.
 
-El selector existente ahora cambia tarjetas, índice, señales y gráfica conjuntamente. Por defecto abre con registros personales; seleccionar ejemplos no escribe registros y volver restaura los valores personales. Los ejemplos usan los tres primeros días del perfil como referencia y el último como lectura actual. `assessWellbeing` centraliza las mismas reglas ilustrativas para ambas fuentes; los informes y las demás pantallas reciben exclusivamente la evaluación personal. No se añadió un modo general de demostración.
-
-Comprobación: Luna muestra 79/100 y tres señales en el ejemplo; al volver, las tarjetas personales y el almacenamiento permanecen iguales. Se verificaron textos ES/EN y ancho móvil de 390 px.
+Verification: Luna shows 79/100 and three signals in the sample view; after switching back, the personal cards and storage remain unchanged. English/Spanish text and a 390 px mobile width were checked.
